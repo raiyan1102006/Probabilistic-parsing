@@ -1,0 +1,52 @@
+Here is the weights file for the test:
+
+% cat weights
+T_A_a 1
+R_S_A_B 10
+F_B_b 100
+L_C_c 50
+
+
+Here's what the feature names mean:
+
+preterminal feature:
+T_A_a 1		means A is a preterminal, a is a terminal,
+		and the feature for A appearing above a has weight 1.
+
+rule feature:
+R_S_A_B 10	means that the feature for the cfg rule S -> A B
+		has weight 10.  S and B are added to the sets of nonterminals.
+
+first word feature:
+F_B_b 100	means that the feature for B appearing anywhere in the tree
+      		with b as its first terminal has wieght 100.
+
+last word feature:
+L_C_c 50	means that the feature for C appearing anywhere in the tree
+      		with c as its last terminal has weight 50.
+
+Conventions: We have separate sets (unary) preterminals and (binary)
+nonterminals.  Features for preterminals come first in the weights
+file, and any symbol mentioned in these features is a preterminal.
+Then come all other features, and all symbols in these features that
+are not already declared as preterminals are nonterminals.
+
+
+
+Some terminal strings to run the parser on:
+
+% cat test
+a a a
+b a a a a a a
+a a a a a a c
+
+
+
+
+
+Now we'll go ahead and run the parser:
+
+% ./parser.py weights test
+13.0 (S (A a) (B (A a) (A a)))
+506.0 (S (B (B (B (B (B (A b) (A a)) (A a)) (A a)) (A a)) (A a)) (A a))
+256.0 (S (A a) (C (A a) (C (A a) (C (A a) (C (A a) (C (A a) (A c)))))))

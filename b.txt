@@ -1,0 +1,255 @@
+Here is an example of a training file, and a run of the
+perceptron algorithm on this file.
+
+
+
+
+% cat train
+(S (A a) (B (A a) (A b)))
+(S (A a) (C (A b) (A c)))
+(S (B (A a) (A b)) (A a))
+
+
+Your program should be called perceptron.py and should
+take two command line arguments: the input file of
+training trees, and the output file of learned weights.
+
+Make sure that the weights file you produce with your
+perceptron.py works as input for your parser.py.
+
+
+% ./perceptron.py train weights.learned
+
+iter 0
+gold tree: (S (A a) (B (A a) (A b)))
+viterbi parse:
+0 (S (A a) (S (A a) (A b)))
+incorrect parse
+updated weights:
+  F_B_a 1
+  F_S_a -1
+  L_B_b 1
+  L_S_b -1
+  R_B_A_A 1
+  R_S_A_A -1
+  R_S_A_B 1
+  R_S_A_S -1
+  T_A_a 0
+  T_A_b 0
+
+gold tree: (S (A a) (C (A b) (A c)))
+viterbi parse:
+2 (S (B (A a) (A b)) (A c))
+incorrect parse
+updated weights:
+  F_B_a 0
+  F_C_b 1
+  F_S_a -1
+  L_B_b 0
+  L_C_c 1
+  L_S_b -1
+  L_S_c 0
+  R_B_A_A 0
+  R_C_A_A 1
+  R_S_A_A -1
+  R_S_A_B 1
+  R_S_A_C 1
+  R_S_A_S -1
+  R_S_B_A -1
+  T_A_a 0
+  T_A_b 0
+  T_A_c 0
+
+gold tree: (S (B (A a) (A b)) (A a))
+viterbi parse:
+2 (S (A a) (C (A b) (A a)))
+incorrect parse
+updated weights:
+  F_B_a 1
+  F_C_b 0
+  F_S_a -1
+  L_B_b 1
+  L_C_a -1
+  L_C_c 1
+  L_S_a 0
+  L_S_b -1
+  L_S_c 0
+  R_B_A_A 1
+  R_C_A_A 0
+  R_S_A_A -1
+  R_S_A_B 1
+  R_S_A_C 0
+  R_S_A_S -1
+  R_S_B_A 0
+  T_A_a 0
+  T_A_b 0
+  T_A_c 0
+
+errors in this iter: 3
+
+iter 1
+gold tree: (S (A a) (B (A a) (A b)))
+viterbi parse:
+2 (S (A a) (B (A a) (A b)))
+correct parse
+
+gold tree: (S (A a) (C (A b) (A c)))
+viterbi parse:
+2 (S (B (A a) (A b)) (A c))
+incorrect parse
+updated weights:
+  F_B_a 0
+  F_C_b 1
+  F_S_a -1
+  L_B_b 0
+  L_C_a -1
+  L_C_c 2
+  L_S_a 0
+  L_S_b -1
+  L_S_c 0
+  R_B_A_A 0
+  R_C_A_A 1
+  R_S_A_A -1
+  R_S_A_B 1
+  R_S_A_C 1
+  R_S_A_S -1
+  R_S_B_A -1
+  T_A_a 0
+  T_A_b 0
+  T_A_c 0
+
+gold tree: (S (B (A a) (A b)) (A a))
+viterbi parse:
+1 (S (A a) (C (A b) (A a)))
+incorrect parse
+updated weights:
+  F_B_a 1
+  F_C_b 0
+  F_S_a -1
+  L_B_b 1
+  L_C_a -2
+  L_C_c 2
+  L_S_a 0
+  L_S_b -1
+  L_S_c 0
+  R_B_A_A 1
+  R_C_A_A 0
+  R_S_A_A -1
+  R_S_A_B 1
+  R_S_A_C 0
+  R_S_A_S -1
+  R_S_B_A 0
+  T_A_a 0
+  T_A_b 0
+  T_A_c 0
+
+errors in this iter: 2
+
+iter 2
+gold tree: (S (A a) (B (A a) (A b)))
+viterbi parse:
+2 (S (A a) (B (A a) (A b)))
+correct parse
+
+gold tree: (S (A a) (C (A b) (A c)))
+viterbi parse:
+2 (S (B (A a) (A b)) (A c))
+incorrect parse
+updated weights:
+  F_B_a 0
+  F_C_b 1
+  F_S_a -1
+  L_B_b 0
+  L_C_a -2
+  L_C_c 3
+  L_S_a 0
+  L_S_b -1
+  L_S_c 0
+  R_B_A_A 0
+  R_C_A_A 1
+  R_S_A_A -1
+  R_S_A_B 1
+  R_S_A_C 1
+  R_S_A_S -1
+  R_S_B_A -1
+  T_A_a 0
+  T_A_b 0
+  T_A_c 0
+
+gold tree: (S (B (A a) (A b)) (A a))
+viterbi parse:
+0 (S (A a) (B (A b) (A a)))
+incorrect parse
+updated weights:
+  F_B_a 1
+  F_B_b -1
+  F_C_b 1
+  F_S_a -1
+  L_B_a -1
+  L_B_b 1
+  L_C_a -2
+  L_C_c 3
+  L_S_a 0
+  L_S_b -1
+  L_S_c 0
+  R_B_A_A 0
+  R_C_A_A 1
+  R_S_A_A -1
+  R_S_A_B 0
+  R_S_A_C 1
+  R_S_A_S -1
+  R_S_B_A 0
+  T_A_a 0
+  T_A_b 0
+  T_A_c 0
+
+errors in this iter: 2
+
+iter 3
+gold tree: (S (A a) (B (A a) (A b)))
+viterbi parse:
+0 (S (A a) (B (A a) (A b)))
+correct parse
+
+gold tree: (S (A a) (C (A b) (A c)))
+viterbi parse:
+5 (S (A a) (C (A b) (A c)))
+correct parse
+
+gold tree: (S (B (A a) (A b)) (A a))
+viterbi parse:
+1 (S (B (A a) (A b)) (A a))
+correct parse
+
+errors in this iter: 0
+No errors in this iter, stopping now
+
+
+
+
+
+
+Let's look at the resulting weight file.
+
+% cat weights.learned
+F_B_a 1
+F_B_b -1
+F_C_b 1
+F_S_a -1
+L_B_a -1
+L_B_b 1
+L_C_a -2
+L_C_c 3
+L_S_a 0
+L_S_b -1
+L_S_c 0
+R_B_A_A 0
+R_C_A_A 1
+R_S_A_A -1
+R_S_A_B 0
+R_S_A_C 1
+R_S_A_S -1
+R_S_B_A 0
+T_A_a 0
+T_A_b 0
+T_A_c 0
