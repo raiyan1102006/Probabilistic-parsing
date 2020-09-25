@@ -1,27 +1,24 @@
-# Probabilistic-parsing
-Probabilistic parsing
+# Probabilistic Parsing using Viterbi CYK Decoder
 
-README
-======
+**Author:** Raiyan Abdul Baten
 
-Homework 3
-Raiyan Abdul Baten
+This project was done as part of a homework in the CSC448 Statistical Speech and Language Processing course at the University of Rochester.
 
 
-Usage Instruction
-=================
+## Usage Instruction
 
-To run the program, simply use the following commands as instructed in the class website:
+To run the program, simply use the following commands:
 
-hw3a:
+(a)
+```
 python3 parser.py weights test
-
-hw3b:
+```
+(b)
+```
 python3 perceptron.py train weights.trained
+```
 
 
-
-Acknowledgment
-==============
+## Acknowledgment
 I took help from this set of slides, where the weighted CYK algorithm is explained nicely: 
 http://www.cs.virginia.edu/~kc2wc/teaching/NLP16/slides/16-CKY.pdf
