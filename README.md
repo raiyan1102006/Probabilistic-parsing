@@ -9,9 +9,9 @@ This project was done as part of a homework in the CSC448 Statistical Speech and
 
 rule: (A,B,C)
 
-first word: (A, xi+1 )
+first word: (A, x_{i+1} )
 
-last word: (A, xk )
+last word: (A, x_{k} )
 
 A test case and description of the file format is given in the a.txt file.
 
