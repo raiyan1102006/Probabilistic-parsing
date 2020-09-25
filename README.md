@@ -4,6 +4,14 @@
 
 This project was done as part of a homework in the CSC448 Statistical Speech and Language Processing course at the University of Rochester.
 
+## Task
+**Part a:** implement a viterbi cyk decoder using the following features:
+rule: (A,B,C)
+first word: (A, xi+1 )
+last word: (A, xk )
+A test case and description of the file format is given in a.out.
+
+**Part b:** implement perceptron training for this set of features. See test case in b.out.
 
 ## Usage Instruction
 
