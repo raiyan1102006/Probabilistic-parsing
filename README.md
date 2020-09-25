@@ -9,7 +9,7 @@ This project was done as part of a homework in the CSC448 Statistical Speech and
 
 rule: (A,B,C)
 
-first word: (A, x_{i+1} )
+first word: (A, x<sub>i+1</sub>} )
 
 last word: (A, x_{k} )
 
